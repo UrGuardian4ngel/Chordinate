@@ -1,0 +1,79 @@
+{% set body_classes = ['chord', 'dark-ui'] %}
+{% extends 'base.twig' %}
+
+{% block javascripts %}
+<script type="text/javascript" src="scripts/ChordPro.js"></script>
+{% endblock %}
+
+{% block javascripts_footer %}
+<script type="text/javascript">
+var container = $('#chord-container'),
+    header = $('#chord-header');
+
+function loadChords (filename)
+{
+    $.ajax(filename)
+        .then(function (file) {
+
+            var tokens = ChordPro.tokenize(file),
+                compiledTokens = ChordPro.compile(tokens.concat()),
+                html = ChordPro.parseHTML(compiledTokens);
+
+            container.html(html);
+
+            header
+                .empty()
+                .append( container.find('h1, h2') );
+
+            container.find('span')
+                .each(function (key, elem) {
+                    var minWidth = $(elem).find('em').width();
+                    if ($(elem).width() < minWidth) {
+                        $(elem).css('min-width', minWidth + 5);
+                    }
+                });
+
+            updateColumnLayout();
+        });
+}
+
+function updateColumnLayout()
+{
+    // Remove current column layout
+    container.removeClass(function (index, css) {
+        return (css.match (/(^|\s)cols-\S+/g) || []).join(' ');
+    });
+
+    var numCols = Math.ceil( container.outerHeight() / (window.innerHeight - 50) );
+    container.addClass('cols-' + numCols);
+}
+
+$('a', '#chord-selector').click(function (e) {
+    e.preventDefault();
+    
+    loadChords(e.target.href);
+});
+
+$(document).keydown(function (e) {
+    switch (e.which) {
+        case 83:
+            $(document.body).toggleClass('dark-ui');
+            break;
+    }
+})
+</script>
+{% endblock %}
+
+{% block content %}
+<article>
+    <header id="chord-header"></header>
+
+    <div id="chord-container"></div>
+</article>
+
+<aside id="chord-selector">
+    <ul>
+        <li><a href="/library/files/artist-folder/song-title.pro">Song Title</a></li>
+    </ul>
+</aside>
+{% endblock %}

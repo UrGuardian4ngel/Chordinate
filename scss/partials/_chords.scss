@@ -1,0 +1,139 @@
+section {
+  //width: 33%;
+  //outline: solid 1px blue;
+}
+
+article {
+  line-height: 1.5em;
+
+  header {
+    //@include column-span(all);
+    -webkit-column-span: all;
+       -moz-column-span: all;
+            column-span: all;
+  }
+
+  #chord-container {
+    &.cols-2 {
+        @include column-count(2);
+    }
+  }
+}
+
+#chord-container {
+  > br {
+    display: none;
+  }
+}
+
+header {
+  h1, h2 {
+    display: inline-block;
+    margin-bottom: 8px;
+  }
+
+  h1 {
+    font-size: 20px;
+    margin-right: 5px;
+  }
+
+  h2 {
+    font-weight: lighter;
+    color: #666;
+  }
+}
+
+section {
+  //margin-bottom: 15px;
+  padding: 10px;
+}
+
+.chorus {
+  background: #EEE;
+  @include border-radius(0 8px 8px 0);
+}
+
+p {
+  padding: 10px 15px;
+
+  //width: 33%;
+}
+
+span {
+  position: relative;
+
+  display: inline-block;
+  margin: 0 2px;
+  padding-top: 20px;
+  line-height: 1.5em;
+
+  min-height: 2.4em;
+
+  em {
+    position: absolute;
+    top: 0px;
+  }
+}
+
+.comment {
+  display: block;
+  padding: 0;
+  margin: 0;
+  min-height: initial;
+
+  font-size: smaller;
+}
+
+.instrumental {
+   line-height: 1.5em;
+
+  .beats {
+    display: inline-block;
+
+    &.span-2 { width: 2em; }
+    &.span-4 { width: 4em; }
+    &.span-8 { width: 8em; }
+  }
+}
+
+header {
+  padding: 10px 10px 0;
+}
+
+#chord-selector {
+  font-size: smaller;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+
+  padding: 10px;
+
+  a {
+    text-decoration: none;
+    line-height: 1.5em;
+  }
+}
+
+.no-chords {
+  span {
+    min-width: initial !important;
+    min-height: initial;
+    
+    em {
+      display: none;
+    }
+  }
+}
+
+body.dark-ui {
+  background: #1E1E1E;
+  color: #FFF;
+
+  .chorus {
+    background: #2E2E2E;
+  }
+
+  #chord-selector, #chord-selector a {
+    color: #777;
+  }
+}

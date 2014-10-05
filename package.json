@@ -1,0 +1,28 @@
+{
+  "name": "Chordinate",
+  "version": "0.0.0",
+  "description": "A web based library application written for musicians",
+  "main": "index.js",
+  "dependencies": {
+    "express": "~4.9.5",
+    "readdirp": "~1.1.0",
+    "twig": "~0.7.2"
+  },
+  "devDependencies": {},
+  "homepage": "https://github.com/UrGuardian4ngel/Chordinate",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/UrGuardian4ngel/Chordinate"
+  },
+  "keywords": [
+    "nodejs",
+    "library",
+    "chordpro",
+    "pdf",
+    "musician"
+  ],
+  "author": "Michaël Jacobs <michael.jacobs92@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/UrGuardian4ngel/Chordinate/issues"
+  }
+}

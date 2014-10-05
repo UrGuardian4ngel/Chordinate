@@ -1,0 +1,11 @@
+article {
+  #chord-container {
+    &.cols-3 {
+      @include column-count(3);
+    }
+
+    &.cols-4 {
+      @include column-count(4);
+    }  
+  }
+}

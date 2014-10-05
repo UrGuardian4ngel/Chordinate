@@ -1,0 +1,9 @@
+article {
+  #chord-container {
+    &.cols-2,
+    &.cols-3,
+    &.cols-4 {
+      @include column-count(2);
+    }
+  }
+}
